@@ -14,6 +14,7 @@ const Conversations = () => {
         if (data.error) throw new Error(data.error);
         setConversations(data);
       } catch (error) {
+        console.log(error)
       } finally {
         setLoading(false);
       }
@@ -23,7 +24,7 @@ const Conversations = () => {
 
   console.log(conversations);
   return (
-    <div className="w-52 flex flex-col gap-7 overflow-auto px-2">
+    <div className="w-11/12 flex flex-col gap-7 overflow-auto px-2">
       {conversations.map((conversation) => (
         <Conversation key={conversation._id} conversation={conversation} />
       ))}

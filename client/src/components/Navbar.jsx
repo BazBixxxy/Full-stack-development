@@ -21,6 +21,13 @@ const Navbar = () => {
     }
   };
 
+  const handleClick = () => {
+    const elem = document.activeElement;
+    if (elem) {
+      elem?.blur();
+    }
+  };
+
   return (
     <div className="navbar bg-base-100 p-8 fixed top-0 z-50 pb-2">
       <div className="flex-1">
@@ -50,7 +57,7 @@ const Navbar = () => {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
+                alt="pic"
                 src={
                   !authUser?.profilePic
                     ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
@@ -63,22 +70,22 @@ const Navbar = () => {
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 gap-3"
           >
-            <li>
+            <li onClick={handleClick}>
               <NavLink to={"/home"}>Home</NavLink>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <NavLink className={`justify-between`} to={"/chat"}>
                 Chat
                 <span className="badge">Beta</span>
               </NavLink>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <NavLink to={"/profile"} className="justify-between">
                 My Profile
                 <span className="badge">New</span>
               </NavLink>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <button onClick={logout}>{authUser ? "logout" : ""}</button>
             </li>
           </ul>

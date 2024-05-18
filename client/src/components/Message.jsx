@@ -1,25 +1,30 @@
 import React from "react";
+import useConversation from "../zustand/useConversation";
+import { extractTime } from "../utilities/extractTime";
 
-const Message = () => {
+const Message = ({ message }) => {
+  const { selectedConversation } = useConversation();
+
+  const formattedTime = extractTime(message.createdAt);
+
+  const fromMe = message.senderId;
+
+  const chatClassName = fromMe ? "chat-end" : "chat-start";
+  const bubbleBgColor = fromMe ? `bg-blue-500` : `bg-gray-700`;
+  const bubbleTextColor = fromMe ? `text-gray-800` : "";
+
   return (
     <div className="pt-3 pb-2">
-      <div className="chat chat-start">
-        <div className="chat-image avatar">
-          <div className="w-10 rounded-full">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
+      <div className={`chat ${chatClassName}`}>
+        <div className={`chat-bubble ${bubbleBgColor} ${bubbleTextColor} pb-2`}>
+          {message.message}
         </div>
-        <div className="chat-bubble">You were the Chosen One!</div>
-        <div className="chat-footer opacity-50">Delivered</div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-image avatar">
-          <div className="w-10 rounded-full">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
+        <div className="chat-footer opacity-50">
+          {" "}
+          <time className="chat-footer text-xs opacity-50 flex gap-1 items-center mt-auto">
+            {formattedTime}
+          </time>
         </div>
-        <div className="chat-bubble">I hate you!</div>
-        <div className="chat-footer opacity-50">Seen at 12:46</div>
       </div>
     </div>
   );

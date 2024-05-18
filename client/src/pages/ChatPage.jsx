@@ -4,6 +4,13 @@ import MessageContainer from "../components/MessageContainer";
 import { IoChatbubblesOutline } from "react-icons/io5";
 
 const ChatPage = () => {
+  const handleClick = () => {
+    const elem = document.activeElement;
+    if (elem) {
+      elem?.blur();
+    }
+  };
+
   return (
     <div className="drawer drawer-end relative">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
