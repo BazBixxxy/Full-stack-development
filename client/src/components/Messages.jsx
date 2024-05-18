@@ -2,12 +2,15 @@ import React, { useEffect, useState, useRef } from "react";
 import Message from "./Message";
 import useConversation from "../zustand/useConversation";
 import MessageSkeleton from "./MessageSkeleton";
+import useListenMessages from "../hooks/useListenMessages";
 
 const Messages = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversation();
 
   const lastMessageRef = useRef();
+
+  useListenMessages();
 
   useEffect(() => {
     const getMessages = async () => {
@@ -32,13 +35,15 @@ const Messages = () => {
     }, 100);
   }, [messages]);
 
+  // console.log(messages)
+
   return (
     <>
       <div className="px-4 h-full overflow-auto">
         {!loading &&
           messages.length > 0 &&
-          messages.map((message) => (
-            <div className="" key={message._id} ref={lastMessageRef}>
+          messages.map((message, index) => (
+            <div key={index} ref={lastMessageRef}>
               <Message message={message} />
             </div>
           ))}

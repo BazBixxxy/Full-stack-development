@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { config } from "dotenv";
+import { app, server } from "./sockets/socket.js";
 config();
 
 // imports
@@ -11,7 +12,6 @@ import uploadImage from "./utilities/uploadImages.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
-const app = express();
 // middleware
 app.use(
   express.json({
@@ -45,7 +45,7 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("connected to database");
-    app.listen(5000, () => {
+    server.listen(5000, () => {
       console.log("server running on port 5000");
     });
   })
