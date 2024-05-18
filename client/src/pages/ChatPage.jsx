@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import MessageContainer from "../components/MessageContainer";
 import { IoChatbubblesOutline } from "react-icons/io5";
 
 const ChatPage = () => {
-  const handleClick = () => {
-    const elem = document.activeElement;
-    if (elem) {
-      elem?.blur();
-    }
+  const [checkbox, setCheckbox] = useState(false);
+  const handleClick = (e) => {
+    setCheckbox(e.target.checked);
   };
 
   return (
     <div className="drawer drawer-end relative">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+      <input
+        id="my-drawer-4"
+        type="checkbox"
+        checked={checkbox}
+        onChange={handleClick}
+        className="drawer-toggle"
+      />
       <div className="drawer-content">
         {/* Page content here */}
         <MessageContainer />
@@ -32,7 +36,7 @@ const ChatPage = () => {
         ></label>
         <div className="menu w-96 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
-          <Sidebar />
+          <Sidebar handleEvent={() => setCheckbox(false)} />
         </div>
       </div>
     </div>
