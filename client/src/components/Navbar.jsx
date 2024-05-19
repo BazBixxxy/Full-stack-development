@@ -88,7 +88,10 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li onClick={handleClick}>
-              <NavLink to={"/profile"} className="justify-between">
+              <NavLink
+                to={authUser ? "/profile" : "/profile/login"}
+                className="justify-between"
+              >
                 {authUser ? "profile settings" : "login"}
                 <span className="badge">New</span>
               </NavLink>

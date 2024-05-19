@@ -19,6 +19,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import AddPost from "./components/AddPost";
 import ViewPostPage from "./pages/ViewPostPage";
 import GalleryViewPage from "./pages/GalleryViewPage";
+import EditProfile from "./pages/EditProfile";
 
 const App = () => {
   const { authUser } = useAuthContext();
@@ -53,7 +54,12 @@ const App = () => {
               authUser ? <Navigate to={"/profile/user"} /> : <LoginPage />
             }
           />
-          <Route path="/profile/user" element={<UserProfilePage />} />
+          <Route
+            path="/profile/user/edit/:id"
+            element={
+              authUser ? <EditProfile /> : <Navigate to={"/profile/login"} />
+            }
+          />
           <Route
             path="/chat"
             element={

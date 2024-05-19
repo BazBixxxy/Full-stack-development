@@ -11,6 +11,7 @@ const SignupPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [imageLink, setImageLink] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -47,6 +48,12 @@ const SignupPage = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const addImageLink = (e) => {
+    e.preventDefault();
+    setProfilePic(imageLink);
+    setImageLink("");
   };
 
   const handleSubmit = async (e) => {
@@ -127,7 +134,28 @@ const SignupPage = () => {
             minLength={4}
           />
         </div>
-        <div className="grid grid-cols-2 mt-5 gap-2 h-40">
+        <div className="w-72">
+          <label className="label pb-1">
+            <span className="text-base label-text">Add Image Address</span>
+          </label>
+          <span className="text-sm text-gray-500">*preferred</span>
+          <div className="flex items-center gap-2">
+            <input
+              type="url"
+              placeholder="https://......jpg/png/webp/jpeg"
+              className="input input-bordered h-10"
+              value={imageLink}
+              onChange={(e) => setImageLink(e.target.value)}
+            />
+            <button
+              className="bg-primary btn text-white rounded-md"
+              onClick={addImageLink}
+            >
+              add
+            </button>
+          </div>
+        </div>
+        <div className="flex mt-5 gap-2 h-40">
           {profilePic && (
             <div className="h-40 w-40 rounded-full text-gray-500 flex items-center justify-center flex-col text-center cursor-pointer relative">
               <div className="absolute top-0 h-full w-full opacity-50 hover:opacity-100 content rounded-full text-white">

@@ -21,7 +21,7 @@ const LoginPage = () => {
         password,
       });
       if (data.error) throw new Error(data.error);
-      console.log(data.data);
+      // console.log(data.data);
       localStorage.setItem("alphaUser", JSON.stringify(data.data));
       setAuthUser(data.data);
       setUsername("");
