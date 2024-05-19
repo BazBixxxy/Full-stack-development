@@ -22,8 +22,7 @@ const HomePage = () => {
   };
 
   return (
-    <section className="px-8 py-8 pt-28 relative">
-      {/* <CategoryNav /> */}
+    <section className="px-8 py-8 pt-48 relative">
       <ImageGallery updateUI={updateUI} setUpdateUI={setUpdateUI} />
       <button
         className="fixed right-10 bottom-10 z-20 p-4 rounded-full bg-primary"

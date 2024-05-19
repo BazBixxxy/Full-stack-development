@@ -170,6 +170,7 @@ const AddPost = ({ visible, setVisible, authUser, updateUI, setUpdateUI }) => {
           <option value={"design"}>Design</option>
           <option value={"nature"}>Nature</option>
           <option value={"beauty"}>Beauty</option>
+          <option value={"inspiration"}>Inspiration</option>
           <option value={"quote"}>Quotes</option>
         </select>
         <button className="bg-primary text-white p-2 rounded-md mt-5 text-md font-light">

@@ -20,6 +20,7 @@ import AddPost from "./components/AddPost";
 import ViewPostPage from "./pages/ViewPostPage";
 import GalleryViewPage from "./pages/GalleryViewPage";
 import EditProfile from "./pages/EditProfile";
+import HomeLayout from "./layouts/HomeLayout";
 
 const App = () => {
   const { authUser } = useAuthContext();
@@ -29,7 +30,9 @@ const App = () => {
       <>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<IndexPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/home" element={<HomeLayout />}>
+            <Route path="/home" element={<HomePage />} />
+          </Route>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/home/post/:id" element={<ViewPostPage />} />
           <Route

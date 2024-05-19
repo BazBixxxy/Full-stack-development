@@ -4,6 +4,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { TbArrowBigUpFilled } from "react-icons/tb";
 import { IoBookmark } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import CategoryNav from "./CategoryNav";
 
 const images = [
   "https://cdn.pixabay.com/photo/2019/11/10/11/13/couple-4615557_1280.jpg",

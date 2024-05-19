@@ -39,7 +39,7 @@ const Messages = () => {
 
   return (
     <>
-      <div className="px-4 h-full overflow-auto">
+      <div className="px-4 h-full overflow-auto example">
         {!loading &&
           messages.length > 0 &&
           messages.map((message, index) => (
