@@ -20,6 +20,10 @@
   opacity: 1;
 }
 
+.bg-shade {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -65,5 +69,12 @@
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

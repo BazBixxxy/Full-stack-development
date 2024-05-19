@@ -22,7 +22,7 @@ const Conversations = () => {
     getConversation();
   }, []);
 
-  console.log(conversations);
+  // console.log(conversations);
   return (
     <div className="w-11/12 flex flex-col gap-7 overflow-auto px-2">
       {conversations.map((conversation) => (

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = ({ handleEvent }) => {
   return (
-    <div className="relative w-full mt-16 pt-10 pl-10 pb-20 overflow-auto h-full bg-white">
+    <div className="relative w-full mt-16 pt-10 pl-10 pb-20 overflow-auto h-full">
       <SearchInput />
       <div className="divider"></div>
       <div onClick={handleEvent}>

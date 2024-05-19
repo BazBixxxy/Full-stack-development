@@ -1,13 +1,14 @@
 import React from "react";
 import { IoLogoIonic } from "react-icons/io";
 import { TbAlpha } from "react-icons/tb";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 const Navbar = () => {
   const { authUser, setAuthUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const logout = async () => {
     try {
@@ -15,6 +16,7 @@ const Navbar = () => {
       localStorage.removeItem("alphaUser");
       setAuthUser(null);
       toast.success("logged out");
+      navigate("/home");
     } catch (error) {
       toast.error("internal error");
       console.log(error);
@@ -29,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 p-8 fixed top-0 z-50 pb-2">
+    <div className="navbar bg-base-100 p-8 fixed top-0 z-40 pb-2">
       <div className="flex-1">
         <Link
           to={"/"}
@@ -45,6 +47,7 @@ const Navbar = () => {
             type="text"
             placeholder="Search"
             className="input input-bordered w-24 md:w-auto"
+            disabled
           />
         </div>
         <div className="dropdown dropdown-end">
@@ -73,6 +76,11 @@ const Navbar = () => {
             <li onClick={handleClick}>
               <NavLink to={"/home"}>Home</NavLink>
             </li>
+            {authUser && (
+              <li onClick={handleClick}>
+                <NavLink to={`/gallery/${authUser?._id}`}>My Gallery</NavLink>
+              </li>
+            )}
             <li onClick={handleClick}>
               <NavLink className={`justify-between`} to={"/chat"}>
                 Chat
@@ -81,13 +89,15 @@ const Navbar = () => {
             </li>
             <li onClick={handleClick}>
               <NavLink to={"/profile"} className="justify-between">
-                My Profile
+                {authUser ? "profile settings" : "login"}
                 <span className="badge">New</span>
               </NavLink>
             </li>
-            <li onClick={handleClick}>
-              <button onClick={logout}>{authUser ? "logout" : ""}</button>
-            </li>
+            {authUser && (
+              <li onClick={handleClick}>
+                <button onClick={logout}>logout</button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

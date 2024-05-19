@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth.routes.js";
 import uploadImage from "./utilities/uploadImages.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import postRoutes from "./routes/post.routes.js";
 
 // middleware
 app.use(
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 app.get("/api/test", (req, res) => {
   res.status(200).json("server running here");
