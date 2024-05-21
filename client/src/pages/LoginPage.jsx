@@ -27,7 +27,7 @@ const LoginPage = () => {
       setUsername("");
       setPassword("");
       toast.success("logged in");
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       console.log(error);
       toast.error("internal error");

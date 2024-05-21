@@ -29,12 +29,12 @@ const App = () => {
     createRoutesFromElements(
       <>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<IndexPage />} />
-          <Route path="/home" element={<HomeLayout />}>
-            <Route path="/home" element={<HomePage />} />
+          {/* <Route index element={<IndexPage />} /> */}
+          <Route path="/" element={<HomeLayout />}>
+            <Route index element={<HomePage />} />
           </Route>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/home/post/:id" element={<ViewPostPage />} />
+          <Route path="/post/:id" element={<ViewPostPage />} />
           <Route
             path={`/gallery/${authUser?._id}`}
             element={
@@ -80,7 +80,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<IndexPage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route
           path="/profile/signup"

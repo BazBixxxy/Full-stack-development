@@ -5,6 +5,7 @@ import { NavLink, Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Headroom from "react-headroom";
 
 const Navbar = () => {
   const { authUser, setAuthUser } = useAuthContext();
@@ -16,7 +17,7 @@ const Navbar = () => {
       localStorage.removeItem("alphaUser");
       setAuthUser(null);
       toast.success("logged out");
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       toast.error("internal error");
       console.log(error);
@@ -74,7 +75,7 @@ const Navbar = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 gap-3"
           >
             <li onClick={handleClick}>
-              <NavLink to={"/home"}>Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
             {authUser && (
               <li onClick={handleClick}>
@@ -118,7 +119,7 @@ const Navbar = () => {
       </Link>
       <div className="flex gap-24 text-lg">
         <NavLink
-          to={"/home"}
+          to={"/"}
           className={({ isActive }) =>
             isActive
               ? `border border-primary text-primary px-4 rounded-md py-1 cursor-pointer`

@@ -59,7 +59,7 @@ const ImageGallery = ({ updateUI, setUpdateUI }) => {
                   className="w-full block rounded-sm cursor-pointer hover:brightness-50"
                   alt=""
                 />
-                <Link to={`/home/post/${post._id}`}>
+                <Link to={`/post/${post._id}`}>
                   <div className="absolute top-0 w-full h-full text-white opacity-0 hover:opacity-100 content">
                     <h2 className="absolute top-0 left-2 capitalize">
                       Posted by {post.owner}

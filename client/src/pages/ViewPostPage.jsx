@@ -40,7 +40,7 @@ const ViewPostPage = () => {
         </div>
       ) : (
         <>
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <IoArrowBackCircleOutline className="fixed top-28 text-2xl text-primary" />
           </Link>
           <div className="relative w-72 mb-3">
