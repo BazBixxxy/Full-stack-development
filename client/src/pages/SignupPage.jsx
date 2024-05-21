@@ -34,8 +34,8 @@ const SignupPage = () => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
 
+    setLoading(true);
     try {
-      setLoading(true);
       axios.post(`/api/uploadImages`, { image: base64 }).then((res) => {
         // setUrl(res.data);
         setProfilePic(res.data);

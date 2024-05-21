@@ -21,6 +21,7 @@ import ViewPostPage from "./pages/ViewPostPage";
 import GalleryViewPage from "./pages/GalleryViewPage";
 import EditProfile from "./pages/EditProfile";
 import HomeLayout from "./layouts/HomeLayout";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   const { authUser } = useAuthContext();
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/" element={<HomeLayout />}>
             <Route index element={<HomePage />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post/:id" element={<ViewPostPage />} />
           <Route

@@ -44,8 +44,8 @@ const AddPost = ({ visible, setVisible, authUser, updateUI, setUpdateUI }) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
 
+    setLoading(true);
     try {
-      setLoading(true);
       axios.post(`/api/uploadImages`, { image: base64 }).then((res) => {
         // setUrl(res.data);
         setPost(res.data);
@@ -147,7 +147,7 @@ const AddPost = ({ visible, setVisible, authUser, updateUI, setUpdateUI }) => {
             ) : (
               <>
                 <input type="file" className="hidden" onChange={uploadImage} />
-                <IoCloudUploadOutline /> upload profile photo
+                <IoCloudUploadOutline /> upload profile photo and give it time to load
               </>
             )}
           </label>
@@ -159,7 +159,11 @@ const AddPost = ({ visible, setVisible, authUser, updateUI, setUpdateUI }) => {
           <span className="text-sm text-gray-500">
             *Add a very short description
           </span>
-          <textarea className="p-1 textarea textarea-bordered textarea-ghost resize-none h-10 w-full block"></textarea>
+          <textarea
+            className="p-1 textarea textarea-bordered textarea-ghost resize-none h-10 w-full block"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
         </div>
         <select
           className="select select-bordered w-full max-w-xs mt-5"
