@@ -39,11 +39,17 @@ const MessageInput = () => {
       <div className="w-full relative">
         <input
           type="text"
-          className="border text-sm rounded-md block w-full py-2 px-5 bg-gray-700 border-gray-600 text-white"
+          className="border text-sm rounded-md block w-full py-2 px-5 bg-gray-700 border-gray-600 text-white break-all"
           placeholder="send a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
+        {/* <textarea
+          className="resize-none border text-sm rounded-md block w-full py-2 px-5 bg-gray-700 border-gray-600 text-white h-10 example"
+          placeholder="send a message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea> */}
         <button
           type="submit"
           className="absolute inset-y-0 end-0 flex items-center pe-3 text-gray-400"
@@ -51,7 +57,7 @@ const MessageInput = () => {
           {loading ? (
             <span className="loading loading-ring"></span>
           ) : (
-            <BsSend />
+            <BsSend className="ml-2" />
           )}
         </button>
       </div>

@@ -38,7 +38,8 @@ const Navbar = () => {
           to={"/"}
           className="text-primary flex items-center gap-1 text-xl cursor-pointer"
         >
-          Project Alpha
+          <div className="border-4 h-8 w-8 border-sky-500 rounded-full"></div>
+          Alpha
           <TbAlpha />
         </Link>
       </div>
