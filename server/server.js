@@ -31,6 +31,7 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
+const PORT = process.env.PORT || 5000;
 // * with this I can run my client side on the server
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
@@ -57,8 +58,8 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("connected to database");
-    server.listen(5000, () => {
-      console.log("server running on port 5000");
+    server.listen(PORT, () => {
+      console.log(`server running on port ${PORT}`);
     });
   })
   .catch((error) => {
