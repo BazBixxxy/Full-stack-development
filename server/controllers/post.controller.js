@@ -27,7 +27,9 @@ export const addPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const order = req.query.order || "desc";
+    const sort = req.query.sort || "createdAt";
+    const posts = await Post.find({}).sort({ [sort]: order });
     res.status(200).json(posts);
   } catch (error) {
     console.log(error);

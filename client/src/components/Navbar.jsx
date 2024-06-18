@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 p-8 fixed top-0 z-40 pb-2">
+    <nav className="navbar bg-base-100 p-8 fixed top-0 z-40 pb-2">
       <div className="flex-1">
         <Link
           to={"/"}
@@ -106,7 +106,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
   );
 
   return (
